@@ -1,0 +1,5 @@
+# Get state for a machine, set it as a fact, and generate inventory groups based on state
+- name: calculate the state of the machine
+  become: yes
+  calculate_state:
+- group_by: key=patching_{{ patching_state }}

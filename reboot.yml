@@ -1,0 +1,13 @@
+- name: reboot the machine
+  become: yes
+  shell: /sbin/shutdown -r now "Rebooting machine as part of automated workflow"
+- name: wait for host to come back online
+  local_action:
+    module: wait_for
+    port: 22
+    host: "{{ inventory_hostname }}"
+    search_regex: OpenSSH
+    # Give the host 2m to shut down
+    delay: 120
+    # Give the host 15m to reboot
+    timeout: 900

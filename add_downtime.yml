@@ -1,0 +1,2 @@
+- name: add 60m downtime in nagios
+  local_action: "shell /mnt/home/dstern/chef-repo/bin/schedule-downtime --time \"1 hour\" --comment \"testing\" --host {{ ansible_nodename }}"

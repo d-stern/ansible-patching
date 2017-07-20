@@ -1,0 +1,4 @@
+- name: give nagios 5m to recover
+  pause: minutes=5
+- name: remove downtime in nagios
+  local_action: "shell /mnt/home/dstern/chef-repo/bin/schedule-downtime --clear --host {{ ansible_nodename }}"
